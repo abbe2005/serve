@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post('/send-message', (req, res) => {
+app.post('/api/send-message', (req, res) => {
     const { name, email, message } = req.body;
 
     // Configure nodemailer transporter
@@ -33,6 +33,5 @@ app.post('/send-message', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+// Export the app as a serverless function
+module.exports = app;
