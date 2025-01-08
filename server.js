@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -8,7 +9,6 @@ app.use(bodyParser.json());
 
 app.post('/api/send-message', (req, res) => {
     const { name, email, message } = req.body;
-
     // Configure nodemailer transporter
     const transporter = nodemailer.createTransport({
         service: 'gmail', // or your email service
@@ -17,6 +17,7 @@ app.post('/api/send-message', (req, res) => {
             pass: 'abdennour17' // your email password
         }
     });
+
 
     const mailOptions = {
         from: email,
